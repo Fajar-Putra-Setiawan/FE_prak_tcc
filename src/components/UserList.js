@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import NavbarSupplier from "./NavbarSupplier";
+import NavbarUser from "./NavbarUser";
 
-const SupplierList = () => {
-  const [suppliers, setSupplier] = useState([]);
+const UserList = () => {
+  const [users, setUser] = useState([]);
 
   useEffect(() => {
-    getSuppliers();
+    getUsers();
   }, []);
 
-  const getSuppliers = async () => {
-    const response = await axios.get("https://final-project-388410.uc.r.appspot.com/suppliers");
-    setSupplier(response.data);
+  const getUsers = async () => {
+    const response = await axios.get("https://be-users-dot-final-project-388410.uc.r.appspot.com/users");
+    setUser(response.data);
   };
 
-  const deleteSupplier = async (id) => {
+  const deleteUser = async (id) => {
     try {
-      await axios.delete(`https://final-project-388410.uc.r.appspot.com/suppliers/${id}`);
-      getSuppliers();
+      await axios.delete(`https://be-users-dot-final-project-388410.uc.r.appspot.com/users/${id}`);
+      getUsers();
     } catch (error) {
       console.log(error);
     }
@@ -27,13 +27,14 @@ const SupplierList = () => {
   return (
     <div className="columns mt-5 is-centered">
       <div className="column is-half">
-      {/* <Link to={`Users`} className="button is-success">
-          Member Toko
+      {/* <Link to={`/`} className="button is-success">
+          Supplier
         </Link> */}
-        <NavbarSupplier/>
+
+      <NavbarUser/>
       {/* <div>
             <center>
-                <h1>Daftar Supplier Cloudmart</h1>
+                <h1>Daftar Member Cloudmart</h1>
             </center>
         </div> */}
         <br></br>
@@ -45,26 +46,26 @@ const SupplierList = () => {
               <th>No</th>
               <th>Name</th>
               <th>Email</th>
-              <th>Address</th>
+              <th>Gender</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {suppliers.map((supplier, index) => (
-              <tr key={supplier.id}>
+            {users.map((user, index) => (
+              <tr key={user.id}>
                 <td>{index + 1}</td>
-                <td>{supplier.name}</td>
-                <td>{supplier.email}</td>
-                <td>{supplier.address}</td>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.gender}</td>
                 <td>
                   <Link
-                    to={`editSupplier/${supplier.id}`}
+                    to={`/editUser/${user.id}`}
                     className="button is-small is-info mr-2"
                   >
                     Edit
                   </Link>
                   <button
-                    onClick={() => deleteSupplier(supplier.id)}
+                    onClick={() => deleteUser(user.id)}
                     className="button is-small is-danger"
                   >
                     Delete
@@ -74,7 +75,7 @@ const SupplierList = () => {
             ))}
           </tbody>
         </table>
-        <Link to={`addSupplier`} className="button is-success">
+        <Link to={`/addUser`} className="button is-success">
           Add New
         </Link>
       </div>
@@ -82,4 +83,4 @@ const SupplierList = () => {
   );
 };
 
-export default SupplierList;
+export default UserList;
