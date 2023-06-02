@@ -16,7 +16,7 @@ const EditUser = () => {
   const updateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`https://be-users-dot-final-project-388410.uc.r.appspot.com/users/${id}`, {
+      await axios.patch(`https://backend2-dot-project-prak-tcc-388614.et.r.appspot.com/users/${id}`, {
         name,
         email,
         gender,
@@ -28,7 +28,7 @@ const EditUser = () => {
   };
 
   const getUserById = async () => {
-    const response = await axios.get(`https://be-users-dot-final-project-388410.uc.r.appspot.com/users/${id}`);
+    const response = await axios.get(`https://backend2-dot-project-prak-tcc-388614.et.r.appspot.com/users/${id}`);
     setName(response.data.name);
     setEmail(response.data.email);
     setGender(response.data.gender);

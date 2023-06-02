@@ -11,7 +11,7 @@ const AddSupplier = () => {
   const saveSupplier = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://final-project-388410.uc.r.appspot.com/suppliers", {
+      await axios.post("https://backend-dot-project-prak-tcc-388614.et.r.appspot.com/suppliers", {
         name,
         email,
         address,

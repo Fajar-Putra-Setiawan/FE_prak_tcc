@@ -11,7 +11,7 @@ const AddUser = () => {
   const saveUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://be-users-dot-final-project-388410.uc.r.appspot.com/users", {
+      await axios.post("https://backend2-dot-project-prak-tcc-388614.et.r.appspot.com/users", {
         name,
         email,
         gender,
